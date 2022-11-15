@@ -1,0 +1,24 @@
+{
+  "name": "dvfl-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node --no-warnings index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MathieuSchl/dvfl-bot.git"
+  },
+  "author": "CodyIsTheSenate",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MathieuSchl/dvfl-bot/issues"
+  },
+  "homepage": "https://github.com/MathieuSchl/dvfl-bot#readme",
+  "dependencies": {
+    "discord.js": "^14.6.0",
+    "fs": "^0.0.1-security"
+  }
+}
