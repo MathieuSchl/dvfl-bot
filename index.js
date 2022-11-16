@@ -3,8 +3,11 @@ const fs = require("fs");
 const config = require("./config.json");
 
 const client = new Client({
-  intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMembers],
+  intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMembers, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent],
 });
+
+if (!fs.existsSync(__dirname + "/data")) fs.mkdirSync(__dirname + "/data");
+if (!fs.existsSync(__dirname + "/data/bot-data.json")) fs.writeFileSync(__dirname + "/data/bot-data.json", JSON.stringify({ guilds: {} }));
 
 fs.readdir(__dirname + "/event/", (err, files) => {
   files.forEach((file) => {
