@@ -7,7 +7,6 @@ module.exports.run = (client) => {
         break;
 
       default:
-        console.log(message.content);
         break;
     }
   });

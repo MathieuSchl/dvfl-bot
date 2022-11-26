@@ -1,4 +1,5 @@
 const { PermissionFlagsBits } = require("discord.js");
+const botData = require("../../../data/bot-data.json");
 
 module.exports.run = async (interaction) => {
   interaction.deferReply();
@@ -14,4 +15,13 @@ module.exports.run = async (interaction) => {
   } else {
     interaction.member.send(`Désolé je n'ai pas le droit de changer ton pseudo sur le serveur \`${interaction.guild.name}\``);
   }
+  interaction.deleteReply();
+
+  const member = interaction.member;
+  const guild = interaction.guild;
+  const role = await guild.roles.fetch(botData.guilds[guild.id].welcomeRoleId);
+  const highestRole = member.roles.highest;
+
+  const diffPos = guild.roles.comparePositions(role, highestRole);
+  if (diffPos > 0) member.roles.add(role);
 };
