@@ -1,6 +1,7 @@
 const { Client, GatewayIntentBits } = require("discord.js");
 const fs = require("fs");
-const config = require("./config.json");
+const dotenv = require("dotenv");
+dotenv.config();
 
 const client = new Client({
   intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMembers, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent],
@@ -15,4 +16,4 @@ fs.readdir(__dirname + "/event/", (err, files) => {
   });
 });
 
-client.login(config.token);
+client.login(process.env.token);

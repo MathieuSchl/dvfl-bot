@@ -1,6 +1,6 @@
 {
   "name": "dvfl-bot",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -20,6 +20,7 @@
   "homepage": "https://github.com/MathieuSchl/dvfl-bot#readme",
   "dependencies": {
     "discord.js": "^14.6.0",
+    "dotenv": "^16.0.3",
     "fs": "^0.0.1-security"
   }
 }
