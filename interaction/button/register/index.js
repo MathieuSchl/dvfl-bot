@@ -10,8 +10,8 @@ module.exports.run = async (interaction) => {
   // Create the text input components
   const nameInput = new TextInputBuilder()
     .setCustomId("name")
-    .setLabel("Qui est tu ? (Les pseudos c'est pas pratique)")
-    .setPlaceholder("Ton pseudo")
+    .setLabel("Quel est ton prénom ?")
+    .setPlaceholder("Ton prénom")
     .setStyle(TextInputStyle.Short)
     .setMaxLength(32);
 

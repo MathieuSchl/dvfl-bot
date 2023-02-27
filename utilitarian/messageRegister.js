@@ -6,7 +6,7 @@ module.exports.run = async (client, channelId, messageEmbed) => {
   const guild = channel.guild;
   if (!channel.send) return "Channel is not text";
   const row = new ActionRowBuilder().addComponents(
-    new ButtonBuilder().setCustomId("getRoles").setLabel("Vos rôles").setStyle(ButtonStyle.Primary)
+    new ButtonBuilder().setCustomId("register").setLabel("S'enregister").setStyle(ButtonStyle.Primary)
   );
 
   const message = await channel.send({ embeds: [messageEmbed], components: [row] });

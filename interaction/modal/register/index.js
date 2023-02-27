@@ -10,10 +10,14 @@ module.exports.run = async (interaction) => {
       interaction.member.setNickname(name);
       interaction.member.send(`Ton nom est maintenant \`${name}\` sur le serveur \`${interaction.guild.name}\``);
     } else {
-      interaction.member.send(`Je ne peux pas modifier ton nom sur le serveur \`${interaction.guild.name}\`, ton rôle est supérieur au mien`);
+      interaction.member.send(
+        `Je ne peux pas modifier ton nom sur le serveur \`${interaction.guild.name}\`, ton rôle est supérieur au mien`
+      );
     }
   } else {
-    interaction.member.send(`Désolé je n'ai pas le droit de changer ton pseudo sur le serveur \`${interaction.guild.name}\``);
+    interaction.member.send(
+      `Désolé je n'ai pas le droit de changer ton pseudo sur le serveur \`${interaction.guild.name}\``
+    );
   }
   interaction.deleteReply();
 
@@ -23,5 +27,11 @@ module.exports.run = async (interaction) => {
   const highestRole = member.roles.highest;
 
   const diffPos = guild.roles.comparePositions(role, highestRole);
-  if (diffPos > 0) member.roles.add(role);
+  if (diffPos > 0) await member.roles.add(role);
+
+  const message = interaction.message;
+  const roles = botData.guilds[guild.id].messages[message.id].button.addRole;
+  for (const roleToAdd of roles) {
+    await member.roles.add(roleToAdd);
+  }
 };

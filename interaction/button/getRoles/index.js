@@ -38,10 +38,31 @@ async function getEmbed(guild, message, member, interaction) {
     description += `\n${userHasRole ? "✅" : "❌"} ${role.name} : <@&${roleId}>`;
   }
 
-  const rowSelectMenu = new ActionRowBuilder().addComponents(
-    new SelectMenuBuilder().setCustomId("roles").setPlaceholder("Les rôles").setMinValues(0).setMaxValues(options.length).addOptions(options)
-  );
-  const rowButton = new ActionRowBuilder().addComponents(new ButtonBuilder().setCustomId("confirmRole").setLabel("Confirmer").setStyle(ButtonStyle.Primary));
+  const rowSelectMenu =
+    listRoles.length !== 0
+      ? new ActionRowBuilder().addComponents(
+          new SelectMenuBuilder()
+            .setCustomId("roles")
+            .setPlaceholder("Les rôles")
+            .setMinValues(0)
+            .setMaxValues(options.length)
+            .addOptions(options)
+        )
+      : null;
 
-  return { embed: { title: "Choisissez vos rôles", description, color: 0x0099ff }, components: [rowSelectMenu, rowButton] };
+  const rowButton =
+    listRoles.length !== 0
+      ? new ActionRowBuilder().addComponents(
+          new ButtonBuilder().setCustomId("confirmRole").setLabel("Confirmer").setStyle(ButtonStyle.Primary)
+        )
+      : null;
+
+  const components = [];
+  if (rowSelectMenu) components.push(rowSelectMenu);
+  if (rowButton) components.push(rowButton);
+
+  return {
+    embed: { title: components.length === 0 ? "NO_ROLE_LINKED" : "Choisissez vos rôles", description, color: 0x0099ff },
+    components,
+  };
 }
