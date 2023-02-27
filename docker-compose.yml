@@ -6,7 +6,7 @@ services:
     restart: always
     container_name: bot-dvfl
     volumes:
-      - dvflData:/var/lib/mysql
+      - dvflData:/home/node/bot-dvfl/data/
 
 volumes:
   dvflData:
