@@ -22,7 +22,7 @@ function setActivity(client) {
     case 7:
       client.user.setActivity("Change la mèche d'une perceuse");
     case 8:
-      client.user.setActivity("Nettoie un plateau");
+      client.user.setActivity("Nettoie un plateau de MK3");
     case 9:
       client.user.setActivity("Jette le MMU2S par la fenêtre");
     case 10:
