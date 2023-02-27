@@ -7,7 +7,7 @@ module.exports.run = (client) => {
     member.user.send(
       `Bienvenue sur le serveur \`${
         member.guild.name
-      }\`\nPour accéder entièrement au serveur, enregistres toi dans le channel <@&${
+      }\`\nPour accéder entièrement au serveur, enregistres toi dans le channel <#${
         data.guilds[member.guild.id].welcomeChannelId
       }>`
     );
